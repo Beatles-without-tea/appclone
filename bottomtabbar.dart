@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class tabs extends StatefulWidget {
@@ -12,17 +14,31 @@ class _tabsState extends State<tabs> {
     });
   }
   Color _labelColor(int _selectedIndex){
-    if (_selectedIndex==0)  {return Colors.blue;
+    if (_selectedIndex==0)  {return Color(0xFF3A5A98);
     } else
-      if (_selectedIndex==1){return Colors.red;
+      if (_selectedIndex==1){return Color(0xFFD32F2F);
       }else
-        if(_selectedIndex==2){return Colors.blue;
+        if(_selectedIndex==2){return Color(0xFF3A5A98);
         }else
           if (_selectedIndex==3){return Colors.purple;
           }else
-            if (_selectedIndex==4){return Colors.blue;}
+            if (_selectedIndex==4){return Color(0xFF3A5A98);}
 
   }
+
+  String _titleTabBar(int _selectedIndex){
+    if (_selectedIndex==0)  {return "UK Home";
+    } else
+    if (_selectedIndex==1){return "UK Showbiz";
+    }else
+    if(_selectedIndex==2){return "Just The Pictures";
+    }else
+    if (_selectedIndex==3){return "Femail";
+    }else
+    if (_selectedIndex==4){return "More";}
+
+  }
+
   @override
   int _selectedIndex = 0;
 
@@ -30,7 +46,10 @@ class _tabsState extends State<tabs> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              title: Text('texttt'),
+                centerTitle: true,
+                title: Text(_titleTabBar(_selectedIndex),style:TextStyle(fontWeight: FontWeight.normal ) ,),
+                backgroundColor:_labelColor( _selectedIndex),
+
             ),
             bottomNavigationBar: Theme(
               data: ThemeData(
@@ -42,59 +61,53 @@ class _tabsState extends State<tabs> {
                 type: BottomNavigationBarType.fixed,
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.grey,
-                    ),
+                    icon: ImageIcon(AssetImage('assets/images/m2_icon.png')
+                        ,color: Colors.grey,size:25),
                     label: 'UK Home',
 
-                    activeIcon: Icon(
-                      Icons.home,
-                      color: Colors.blue,
+                    activeIcon: ImageIcon(AssetImage('assets/images/m2_icon.png')
+                    ,color: Color(0xFF3A5A98),size:25),
+
                     ),
-                  ),
+
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.business,
+                      Icons.star_rate,
                       color: Colors.grey,
                     ),
                     label: 'UK Showbiz',
                     activeIcon: Icon(
-                      Icons.business,
-                      color: Colors.red,
+                      Icons.star_rate,
+                      color: Color(0xFFD32F2F),
                     ),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.school,
+                      Icons.camera_alt,
                       color: Colors.grey,
                     ),
                     label: 'Just Pics',
                     activeIcon: Icon(
-                      Icons.school,
-                      color: Colors.blue,
+                      Icons.camera_alt,
+                      color: Color(0xFF3A5A98),
                     ),
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.school,
-                      color: Colors.grey,
-                    ),
+                    icon: ImageIcon(AssetImage('assets/images/heel2.png')
+                        ,color: Colors.grey,size:25,),
                     label: 'Femail',
-                    activeIcon: Icon(
-                      Icons.school,
-                      color: Colors.purple,
-                    ),
+                    activeIcon:ImageIcon(AssetImage('assets/images/heel2.png')
+                      ,color: Colors.purple,size:25,),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.settings,
+                      Icons.more_horiz,
                       color: Colors.grey,
                     ),
                     label: 'More',
                     activeIcon: Icon(
-                      Icons.settings,
-                      color: Colors.blue,
+                      Icons.more_horiz,
+                      color: Color(0xFF3A5A98),
                     ),
                   ),
                 ],
