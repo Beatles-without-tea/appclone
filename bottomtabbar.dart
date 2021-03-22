@@ -46,11 +46,44 @@ class _tabsState extends State<tabs> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-                centerTitle: true,
-                title: Text(_titleTabBar(_selectedIndex),style:TextStyle(fontWeight: FontWeight.normal ) ,),
-                backgroundColor:_labelColor( _selectedIndex),
 
-            ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                )
+              ],
+                centerTitle: true,
+                backgroundColor:_labelColor( _selectedIndex),
+                title:
+                Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/m2_icon.png',
+                    fit: BoxFit.contain,
+                    height: 32,
+                    color:Colors.white,
+                  ),
+                  Text(_titleTabBar(_selectedIndex),style:TextStyle(fontWeight: FontWeight.normal )),
+
+                Container()
+                ],
+
+                ),
+                        ),
+
+
+            body:Container(color:Colors.green,),
+
+
+
+
             bottomNavigationBar: Theme(
               data: ThemeData(
                 primaryColor: _labelColor(_selectedIndex),
@@ -116,6 +149,10 @@ class _tabsState extends State<tabs> {
                 selectedFontSize: 12,
                 unselectedFontSize: 12,
               ),
-            )));
+            )
+
+        ),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
