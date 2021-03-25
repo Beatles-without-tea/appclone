@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:mailclone/body.dart';
 
 class tabs extends StatefulWidget {
   @override
@@ -16,13 +17,14 @@ class _tabsState extends State<tabs> {
   Color _labelColor(int _selectedIndex){
     if (_selectedIndex==0)  {return Color(0xFF3A5A98);
     } else
-      if (_selectedIndex==1){return Color(0xFFD32F2F);
-      }else
-        if(_selectedIndex==2){return Color(0xFF3A5A98);
-        }else
-          if (_selectedIndex==3){return Colors.purple;
-          }else
-            if (_selectedIndex==4){return Color(0xFF3A5A98);}
+    if (_selectedIndex==1){return Color(0xFFD32F2F);
+    }else
+    if(_selectedIndex==2){return Color(0xFF3A5A98);
+    }else
+    if (_selectedIndex==3){return Colors.purple;
+    }else
+    if (_selectedIndex==4){return Color(0xFF3A5A98);
+    }else {return Color(0xFF3A5A98);}
 
   }
 
@@ -35,7 +37,8 @@ class _tabsState extends State<tabs> {
     }else
     if (_selectedIndex==3){return "Femail";
     }else
-    if (_selectedIndex==4){return "More";}
+    if (_selectedIndex==4){return "More";
+    }else {return "word";}
 
   }
 
@@ -44,114 +47,114 @@ class _tabsState extends State<tabs> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
+      home: Scaffold(
+          appBar: AppBar(
 
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    // do something
-                  },
-                )
-              ],
-                centerTitle: true,
-                backgroundColor:_labelColor( _selectedIndex),
-                title:
-                Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/m2_icon.png',
-                    fit: BoxFit.contain,
-                    height: 32,
-                    color:Colors.white,
-                  ),
-                  Text(_titleTabBar(_selectedIndex),style:TextStyle(fontWeight: FontWeight.normal )),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  // do something
+                },
+              )
+            ],
+            centerTitle: true,
+            backgroundColor:_labelColor( _selectedIndex),
+            title:
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/m2_icon.png',
+                  fit: BoxFit.contain,
+                  height: 32,
+                  color:Colors.white,
+                ),
+                Text(_titleTabBar(_selectedIndex),style:TextStyle(fontWeight: FontWeight.normal )),
 
                 Container()
-                ],
+              ],
+
+            ),
+          ),
+
+
+          body:mainBody(),
+
+
+
+
+          bottomNavigationBar: Theme(
+            data: ThemeData(
+              primaryColor: _labelColor(_selectedIndex),
+              splashColor: Colors.transparent,
+              //highlightColor: Colors.transparent,
+            ),
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage('assets/images/m2_icon.png')
+                      ,color: Colors.grey,size:25),
+                  label: 'UK Home',
+
+                  activeIcon: ImageIcon(AssetImage('assets/images/m2_icon.png')
+                      ,color: Color(0xFF3A5A98),size:25),
 
                 ),
-                        ),
 
-
-            body:Container(color:Colors.green,),
-
-
-
-
-            bottomNavigationBar: Theme(
-              data: ThemeData(
-                primaryColor: _labelColor(_selectedIndex),
-                splashColor: Colors.transparent,
-                //highlightColor: Colors.transparent,
-              ),
-              child: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage('assets/images/m2_icon.png')
-                        ,color: Colors.grey,size:25),
-                    label: 'UK Home',
-
-                    activeIcon: ImageIcon(AssetImage('assets/images/m2_icon.png')
-                    ,color: Color(0xFF3A5A98),size:25),
-
-                    ),
-
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.star_rate,
-                      color: Colors.grey,
-                    ),
-                    label: 'UK Showbiz',
-                    activeIcon: Icon(
-                      Icons.star_rate,
-                      color: Color(0xFFD32F2F),
-                    ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.star_rate,
+                    color: Colors.grey,
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.camera_alt,
-                      color: Colors.grey,
-                    ),
-                    label: 'Just Pics',
-                    activeIcon: Icon(
-                      Icons.camera_alt,
-                      color: Color(0xFF3A5A98),
-                    ),
+                  label: 'UK Showbiz',
+                  activeIcon: Icon(
+                    Icons.star_rate,
+                    color: Color(0xFFD32F2F),
                   ),
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage('assets/images/heel2.png')
-                        ,color: Colors.grey,size:25,),
-                    label: 'Femail',
-                    activeIcon:ImageIcon(AssetImage('assets/images/heel2.png')
-                      ,color: Colors.purple,size:25,),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.camera_alt,
+                    color: Colors.grey,
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.more_horiz,
-                      color: Colors.grey,
-                    ),
-                    label: 'More',
-                    activeIcon: Icon(
-                      Icons.more_horiz,
-                      color: Color(0xFF3A5A98),
-                    ),
+                  label: 'Just Pics',
+                  activeIcon: Icon(
+                    Icons.camera_alt,
+                    color: Color(0xFF3A5A98),
                   ),
-                ],
-                currentIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                selectedFontSize: 12,
-                unselectedFontSize: 12,
-              ),
-            )
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage('assets/images/heel2.png')
+                    ,color: Colors.grey,size:25,),
+                  label: 'Femail',
+                  activeIcon:ImageIcon(AssetImage('assets/images/heel2.png')
+                    ,color: Colors.purple,size:25,),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.more_horiz,
+                    color: Colors.grey,
+                  ),
+                  label: 'More',
+                  activeIcon: Icon(
+                    Icons.more_horiz,
+                    color: Color(0xFF3A5A98),
+                  ),
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              selectedFontSize: 12,
+              unselectedFontSize: 12,
+            ),
+          )
 
-        ),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

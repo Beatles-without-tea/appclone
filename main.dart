@@ -1,26 +1,14 @@
 import 'package:flutter/material.dart';
+import'package:mailclone/bottomtabbar.dart';
 
-import './bottomtabbar.dart';
+void main() => runApp(new MyApp());
 
-void main(){
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyAppState();
-  }
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color:Colors.white,
-      child:tabs(),
-      );
+    return MaterialApp(
+      home:tabs(),
+    );
   }
 }
-
-
