@@ -75,14 +75,14 @@ class _tabsState extends State<tabs> {
                 ),
                 Text(_titleTabBar(_selectedIndex),style:TextStyle(fontWeight: FontWeight.normal )),
 
-                Container()
+
               ],
 
             ),
           ),
 
 
-          body:mainBody(),
+          body:mainBody(_selectedIndex),
 
 
 

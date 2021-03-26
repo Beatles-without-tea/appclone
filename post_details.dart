@@ -20,7 +20,7 @@ class _PostDetailsState extends State<PostDetails> {
   Widget build(BuildContext context) => new Scaffold(
     appBar: new AppBar(
       title: new Text(
-        post.title,
+        'test',
         style: new TextStyle(fontSize: 16.0),
         overflow: TextOverflow.fade,
       ),
