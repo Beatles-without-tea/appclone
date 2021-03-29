@@ -1,7 +1,10 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:mailclone/body.dart';
+import 'package:mailclone/ukhomeapi.dart';
+import 'package:mailclone/UKshowbizapi.dart';
+import 'package:mailclone/justpicsapi.dart';
+import 'package:mailclone/femailapi.dart';
 
 class tabs extends StatefulWidget {
   @override
@@ -82,7 +85,7 @@ class _tabsState extends State<tabs> {
           ),
 
 
-          body:mainBody(_selectedIndex),
+          body: _selectedIndex==0? mainBody(): _selectedIndex==1? showBiz(): _selectedIndex==2? justPics(): femailAPI(),
 
 
 

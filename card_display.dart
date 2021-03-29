@@ -41,16 +41,18 @@ class cardTing extends StatelessWidget {
     new Row(
       children: <Widget>[
         new Container(
+          margin: EdgeInsets.all(10),
           width: 150.0,
           child: new Image.network(
             post.thumbUrl,
             fit: BoxFit.cover,
           ),
         ),
+        SizedBox(height:20,),
         new Expanded(
             child: new Column(
-             // margin: new EdgeInsets.all(10.0),
-              children:[ new Text(
+              children:[   SizedBox(height:7,),
+                new Text(
                 post.title,
                 style: new TextStyle(color: Colors.black, fontSize: 15.0),
 

@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mailclone/post.dart';
 import 'package:mailclone/post_details.dart';
+import 'package:http/http.dart' as http; // For network calls
 import 'package:mailclone/card_display.dart';
 
-
-class mainBody extends StatefulWidget {
+class showBiz extends StatefulWidget {
 
 
   @override
-  _mainBodyState createState() => _mainBodyState();
+  _showBizState createState() => _showBizState();
 }
 
-class _mainBodyState extends State<mainBody> {
+class _showBizState extends State<showBiz> {
   bool _isRequestSent = false;
   List<Post> postList = [];
   //send request function here
   void _sendRequest() async {
-    String url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=WFMWUwCHTFnJR9RRjay9GZUeGSG9FFhk";
+    String url = "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=WFMWUwCHTFnJR9RRjay9GZUeGSG9FFhk";
     http.Response response = await http.get(url);
     Map decode = json.decode(response.body);
     List results = decode["results"];
@@ -39,14 +39,14 @@ class _mainBodyState extends State<mainBody> {
     return Container(
       alignment: Alignment.center,
       child: !_isRequestSent
-        ? new CircularProgressIndicator()
+          ? new CircularProgressIndicator()
           : new Container(
         child: new ListView.builder(
-          itemCount: postList.length,
-          scrollDirection: Axis.vertical,
-          itemBuilder: (BuildContext context, int tileIndex){
-            return _getPostWidgets(tileIndex);
-          }
+            itemCount: postList.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int tileIndex){
+              return _getPostWidgets(tileIndex);
+            }
         ),
       ),
     );
@@ -64,7 +64,7 @@ class _mainBodyState extends State<mainBody> {
         height: tileIndex==0? 450:150,
         //margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
         child: new Card(
-          child: cardTing(post,tileIndex)
+            child: cardTing(post,tileIndex)
         ),
       ),
     );
