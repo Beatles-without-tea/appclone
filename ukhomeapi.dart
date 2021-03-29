@@ -7,9 +7,9 @@ import 'package:mailclone/post_details.dart';
 import 'package:http/http.dart' as http; // For network calls
 import 'package:mailclone/card_display.dart';
 
+
 class mainBody extends StatefulWidget {
-  int bottomNavIndex;
-  mainBody(this.bottomNavIndex);
+
 
   @override
   _mainBodyState createState() => _mainBodyState();
