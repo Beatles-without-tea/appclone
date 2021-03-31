@@ -5,6 +5,7 @@ import 'package:mailclone/ukhomeapi.dart';
 import 'package:mailclone/UKshowbizapi.dart';
 import 'package:mailclone/justpicsapi.dart';
 import 'package:mailclone/femailapi.dart';
+import 'package:mailclone/search.dart';
 
 class tabs extends StatefulWidget {
   @override
@@ -59,9 +60,11 @@ class _tabsState extends State<tabs> {
                   Icons.search,
                   color: Colors.white,
                 ),
-                onPressed: () {
-                  // do something
+                onPressed: ()
+                {
                 },
+
+
               )
             ],
             centerTitle: true,
