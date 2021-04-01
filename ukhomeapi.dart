@@ -19,10 +19,10 @@ class _mainBodyState extends State<mainBody> {
   List<Post> postList = [];
   //send request function here
   void _sendRequest() async {
-    String url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=WFMWUwCHTFnJR9RRjay9GZUeGSG9FFhk";
+    String url = "https://content.guardianapis.com/search?api-key=6f47359c-bb53-4f0e-88b7-6556f67cb122";
     http.Response response = await http.get(url);
     Map decode = json.decode(response.body);
-    List results = decode["results"];
+    List results = decode["response"]["results"];
     for (var jsonObject in results) {
       var post = Post.getPostFrmJSONPost(jsonObject);
       postList.add(post);

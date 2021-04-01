@@ -17,10 +17,10 @@ Widget _getPostWidgets(int index) {
           children: <Widget>[
             new Container(
               width: 150.0,
-              child: new Image.network(
-                post.thumbUrl,
-                fit: BoxFit.cover,
-              ),
+              //child: new Image.network(
+                //post.thumbUrl,
+                //fit: BoxFit.cover,
+              //),
             ),
             new Expanded(
                 child: new Container(

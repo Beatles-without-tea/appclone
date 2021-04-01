@@ -79,17 +79,17 @@ class _PostDetailsState extends State<PostDetails> {
             width: double.infinity,
             height: 150.0,
             margin: new EdgeInsets.all(10.0),
-            child: new Image.network(
-              post.thumbUrl,
-              fit: BoxFit.cover,
-            ),
+           // child: new Image.network(
+             // post.thumbUrl,
+              //fit: BoxFit.cover,
+           // ),
           ),
-          new Text(
-            post.summary,
-            style: new TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
+          //new Text(
+            //post.summary,
+            //style: new TextStyle(
+              //fontSize: 16.0,
+            //),
+          //),
           new Container(
             margin: new EdgeInsets.only(top: 20.0),
             child: new RaisedButton(

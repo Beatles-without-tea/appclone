@@ -24,14 +24,15 @@ class cardTing extends StatelessWidget {
           width:400,
           height:250,
           //margin: EdgeInsets.all(10),
-          child:new Image.network(
-        post.thumbUrl,
-        fit: BoxFit.fill,
-    ),),
+         // child:new Image.network(
+       // post.thumbUrl,
+        //fit: BoxFit.fill,
+    //),
+    ),
         SizedBox(height:20,),
         Container(
           color:Colors.grey[200],
-          child: Text(post.summary,style: TextStyle(fontSize:15,)),
+          //child: Text(post.summary,style: TextStyle(fontSize:15,)),
 
           ),
       ],
@@ -43,10 +44,10 @@ class cardTing extends StatelessWidget {
         new Container(
           margin: EdgeInsets.all(10),
           width: 150.0,
-          child: new Image.network(
-            post.thumbUrl,
-            fit: BoxFit.cover,
-          ),
+          //child: new Image.network(
+           // post.thumbUrl
+            //fit: BoxFit.cover,
+          //),
         ),
         SizedBox(height:20,),
         new Expanded(
@@ -58,9 +59,9 @@ class cardTing extends StatelessWidget {
 
               ),
             SizedBox(height:5,),
-            new Text(
-                post.summary,
-                style: new TextStyle(color: Colors.black, fontSize: 13.0),)
+            //new Text(
+              //  post.summary,
+                //style: new TextStyle(color: Colors.black, fontSize: 13.0),)
               ],
             )),
 
