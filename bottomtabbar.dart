@@ -88,10 +88,8 @@ class _tabsState extends State<tabs> {
           ),
 
 
-          body: mainBody(),
-         //the first comment out goes before mainBody and the second after
-         // _selectedIndex==0?
-          //: _selectedIndex==1? showBiz(): _selectedIndex==2? justPics(): femailAPI(),
+          body:_selectedIndex==0? mainBody(_selectedIndex): _selectedIndex==1? showBiz(_selectedIndex): _selectedIndex==2? justPics(_selectedIndex): femailAPI(_selectedIndex),
+
 
 
 

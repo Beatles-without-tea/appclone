@@ -23,11 +23,11 @@ class cardTing extends StatelessWidget {
         Container(
           width:400,
           height:250,
-          //margin: EdgeInsets.all(10),
-         // child:new Image.network(
-       // post.thumbUrl,
-        //fit: BoxFit.fill,
-    //),
+          margin: EdgeInsets.all(10),
+          child:new Image.network(
+        post.thumbUrl,
+        fit: BoxFit.fill,
+    ),
     ),
         SizedBox(height:20,),
         Container(
@@ -44,10 +44,10 @@ class cardTing extends StatelessWidget {
         new Container(
           margin: EdgeInsets.all(10),
           width: 150.0,
-          //child: new Image.network(
-           // post.thumbUrl
-            //fit: BoxFit.cover,
-          //),
+          child: new Image.network(
+            post.thumbUrl,
+            fit: BoxFit.cover,
+          ),
         ),
         SizedBox(height:20,),
         new Expanded(

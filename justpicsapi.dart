@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mailclone/post.dart';
 import 'package:mailclone/post_details.dart';
-import 'package:http/http.dart' as http; // For network calls
 import 'package:mailclone/card_display.dart';
 
+
 class justPics extends StatefulWidget {
+  final int botIndex;
+  justPics(this.botIndex);
 
 
   @override
@@ -18,11 +20,11 @@ class _justPicsState extends State<justPics> {
   bool _isRequestSent = false;
   List<Post> postList = [];
   //send request function here
-  void _sendRequest() async {
-    String url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=WFMWUwCHTFnJR9RRjay9GZUeGSG9FFhk";
-    http.Response response = await http.get(url);
+  void _sendRequest(botIndex) async {
+    String link = "https://content.guardianapis.com/search?order-by=newest&q=pictures&api-key=6f47359c-bb53-4f0e-88b7-6556f67cb122&show-fields=thumbnail";
+    http.Response response = await http.get(link);
     Map decode = json.decode(response.body);
-    List results = decode["results"];
+    List results = decode["response"]["results"];
     for (var jsonObject in results) {
       var post = Post.getPostFrmJSONPost(jsonObject);
       postList.add(post);
@@ -31,10 +33,11 @@ class _justPicsState extends State<justPics> {
     setState(() => _isRequestSent = true);
   }
   //main widget here
+
   @override
   Widget build(BuildContext context) {
     if (!_isRequestSent) {
-      _sendRequest();
+      _sendRequest(widget.botIndex);
     }
     return Container(
       alignment: Alignment.center,
@@ -76,8 +79,6 @@ class _justPicsState extends State<justPics> {
         new MaterialPageRoute(
             builder: (BuildContext context) => new PostDetails(post)));
   }}
-
-
 
 
 

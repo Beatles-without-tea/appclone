@@ -2,28 +2,29 @@ import 'package:flutter/material.dart';
 class Post {
   String title;
   //String summary;
-  //String thumbUrl;
+  String thumbUrl;
   int timeStamp;
   String url;
 
-  Post(this.title, this.timeStamp, this.url);
+  Post(this.title, this.timeStamp, this.url, this.thumbUrl);
 
   static Post getPostFrmJSONPost(dynamic jsonObject) {
     String title = jsonObject['webTitle'];
     String url = jsonObject['webUrl'];
     //String summary = jsonObject['abstract'];
-    //List multiMediaList = jsonObject['multimedia'];
+    Map multiMediaList = jsonObject['fields'];
     // We want an average-quality image or nothing
+    String thumbUrl = multiMediaList['thumbnail'];
     //String thumbUrl = multiMediaList.length > 4? multiMediaList[3]['url'] : "";
 
     int timeStamp = DateTime.parse(jsonObject['webPublicationDate']).millisecondsSinceEpoch;
 
-    return new Post(title, timeStamp, url);
+    return new Post(title, timeStamp, url, thumbUrl);
   }
 
   @override
   String toString() {
-    return "title = $title;"
+    return "title = $title; thumbUrl=$thumbUrl"
         "timeStamp = $timeStamp; url = $url";
   }
 }
