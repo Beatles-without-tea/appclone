@@ -22,15 +22,34 @@ class _PostDetailsState extends State<PostDetails> {
   @override
   Widget build(BuildContext context) => new Scaffold(
     appBar: new AppBar(
-      title: new Text(
-        'test',
-        style: new TextStyle(fontSize: 16.0),
-        overflow: TextOverflow.fade,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios, color: Colors.white,),
+
+        onPressed: () => Navigator.of(context).pop(),
       ),
+      backgroundColor:widget.botIndex==0? Color(0xFF3A5A98):widget.botIndex==1? Color(0xFFD32F2F) :widget.botIndex==2? Color(0xFF3A5A98): widget.botIndex==3? Colors.purple:Color(0xFF3A5A98) ,
+      centerTitle: true,
+      title:
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+        Image.asset(
+        'assets/images/m2_icon.png',
+        fit: BoxFit.contain,
+        height: 32,
+        color:Colors.white,
+      ),
+      new Text(
+        widget.botIndex==0?'UK Home':widget.botIndex==1? 'UK Showbiz':widget.botIndex==2? 'Just Pics': widget.botIndex==3?'Femail':'More' ,
+        style: new TextStyle(fontSize: 20.0),
+        //overflow: TextOverflow.fade, //dunno what this does
+      ),
+]),
       actions: <Widget>[
         new IconButton(
             icon: new Icon(
-              Icons.share,
+              Icons.ios_share,
               color: Colors.white,
             ),
             onPressed: () {
@@ -118,8 +137,4 @@ class _PostDetailsState extends State<PostDetails> {
     return formatter.format(timeStamp);
   }
 
-  void _launchUrl() async {
-    String url = post.url;
-    // Launch the url
-  }
 }
