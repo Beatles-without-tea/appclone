@@ -21,7 +21,7 @@ class _femailAPIState extends State<femailAPI> {
   List<Post> postList = [];
   //send request function here
   void _sendRequest(botIndex) async {
-    String link = "https://content.guardianapis.com/search?order-by=newest&q=woman&api-key=6f47359c-bb53-4f0e-88b7-6556f67cb122&show-fields=thumbnail";
+    String link = "https://content.guardianapis.com/search?order-by=newest&q=woman&api-key=6f47359c-bb53-4f0e-88b7-6556f67cb122&show-fields=thumbnail,bodyText";
     http.Response response = await http.get(link);
     Map decode = json.decode(response.body);
     List results = decode["response"]["results"];
@@ -48,18 +48,18 @@ class _femailAPIState extends State<femailAPI> {
             itemCount: postList.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int tileIndex){
-              return _getPostWidgets(tileIndex);
+              return _getPostWidgets(tileIndex, widget.botIndex);
             }
         ),
       ),
     );
   }
 
-  Widget _getPostWidgets(int tileIndex) {
+  Widget _getPostWidgets(int tileIndex, int botIndex) {
     var post = postList[tileIndex];
     return new GestureDetector(
       onTap: () {
-        openDetailsUI(post);
+        openDetailsUI(post,botIndex);
       },
 
       child: new Container(
@@ -73,11 +73,11 @@ class _femailAPIState extends State<femailAPI> {
     );
   }
 
-  openDetailsUI(Post post) {
+  openDetailsUI(Post post, int botIndex) {
     Navigator.push(
         context,
         new MaterialPageRoute(
-            builder: (BuildContext context) => new PostDetails(post)));
+            builder: (BuildContext context) => new PostDetails(post, widget.botIndex)));
   }}
 
 

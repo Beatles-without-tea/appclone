@@ -5,8 +5,9 @@ import 'package:web_scraper/web_scraper.dart';
 
 
 class PostDetails extends StatefulWidget {
-  PostDetails(this.post);
   final Post post;
+  final int botIndex;
+  PostDetails(this.post,this.botIndex);
 
   @override
   State<StatefulWidget> createState() => new _PostDetailsState(post);
@@ -65,6 +66,7 @@ class _PostDetailsState extends State<PostDetails> {
             ),
           ),
           new Row(
+
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Icon(
@@ -77,33 +79,34 @@ class _PostDetailsState extends State<PostDetails> {
               )
             ],
           ),
-          new Container(
+
+          Expanded(
+            flex:1,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+          child:
+          Column(children:[ new Container(
             width: double.infinity,
             height: 150.0,
             margin: new EdgeInsets.all(10.0),
-             child: new Image.network(
-             post.thumbUrl,
-            fit: BoxFit.cover,
-             ),
-          ),
-          //new Text(
-          //post.summary,
-          //style: new TextStyle(
-          //fontSize: 16.0,
-          //),
-          //),
-          new Container(
-            margin: new EdgeInsets.only(top: 20.0),
-            child: new RaisedButton(
-              onPressed: _launchUrl,
-              child: new Text(
-                "READ MORE",
-                style: new TextStyle(color: Colors.white),
-              ),
-              color: Theme.of(context).accentColor,
-              splashColor: Colors.deepOrangeAccent,
+            child: new Image.network(
+              post.thumbUrl,
+              fit: BoxFit.cover,
             ),
-          )
+          ),
+            new Text(
+          post.summary,
+
+          style: new TextStyle(
+          fontSize: 20.0,
+          ),
+          ),
+
+
+            ]),
+          ),
+          ),
+
         ],
       ),
     );
